@@ -1,0 +1,17 @@
+default: &default
+  adapter: sqlite3
+  pool: 5
+  host:     <%= ENV.fetch("DATABASE_HOST", 'localhost') %>
+  port:     <%= ENV.fetch("DATABASE_PORT", 3306) %>
+  username: <%= ENV.fetch("DATABASE_USER", 'root') %>
+  password: <%= ENV.fetch("DATABASE_PASS", 1234) %>
+
+development:
+  database: car_pooling_dev
+  <<: *default
+production:
+  database: car_pooling_prod
+  <<: *default
+test:
+  database: car_pooling_test
+  <<: *default
